@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { View, Platform, Text, ScrollView, ActivityIndicator, Button} from 'react-native'
-import PopupDialog, {SlideAnimation} from 'react-native-popup-dialog';
+import PopupDialog, {SlideAnimation, DialogTitle} from 'react-native-popup-dialog';
 
 const slideAnimation = new SlideAnimation({
     slideFrom: 'bottom',
@@ -61,7 +61,11 @@ class MainScreen extends Component {
                 <View style={{flex:1, backgroundColor:'#ddd'}}>
                     <ScrollView>{menuData}</ScrollView>
 
-                    <PopupDialog ref={(popupDialog) => { this.popupDialog = popupDialog; }} style={styles.popUpContainer} dialogAnimation={slideAnimation}>
+                    <PopupDialog 
+                        ref={(popupDialog) => { this.popupDialog = popupDialog; }} 
+                        style={styles.popUpContainer} 
+                        dialogAnimation={slideAnimation}
+                        dialogTitle={<DialogTitle title="Dialog Title" />} >
                         <View>
                         <Text>Hello</Text>
                         </View>
