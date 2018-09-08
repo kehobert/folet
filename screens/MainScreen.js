@@ -1,5 +1,10 @@
 import React, {Component} from 'react'
-import { View, Platform, Text, ScrollView, ActivityIndicator} from 'react-native'
+import { View, Platform, Text, ScrollView, ActivityIndicator, Button} from 'react-native'
+import PopupDialog, {SlideAnimation} from 'react-native-popup-dialog';
+
+const slideAnimation = new SlideAnimation({
+    slideFrom: 'bottom',
+});
 
 class MainScreen extends Component {
 
@@ -15,6 +20,7 @@ class MainScreen extends Component {
         title: 'Folet'
     })
 
+   
     loadData(){
         const url = "http://192.168.100.9/folet_rest/menu.json"
         return fetch(url)
@@ -40,14 +46,27 @@ class MainScreen extends Component {
             )
         }else{
             let menuData = this.state.dataSource.map((val, key) => {
-                return <View key={key}>
+                return <View key={key} style={styles.listContainer}>
                             <Text>{val.menu_name}</Text>
+                            <Button
+                                title="Press"
+                                onPress={() => {
+                                    this.popupDialog.show();
+                                }} 
+                            />
                         </View>
             })  
 
             return(
                 <View style={{flex:1, backgroundColor:'#ddd'}}>
                     <ScrollView>{menuData}</ScrollView>
+
+                    <PopupDialog ref={(popupDialog) => { this.popupDialog = popupDialog; }} style={styles.popUpContainer} dialogAnimation={slideAnimation}>
+                        <View>
+                        <Text>Hello</Text>
+                        </View>
+                    </PopupDialog>
+
                 </View>
             )
         }
@@ -56,11 +75,11 @@ class MainScreen extends Component {
 }
 
 const styles = {
-    image:{
-        marginTop: 20,
-        marginLeft: 10,
-        width: 40,
-        height: 40
+    listContainer: {
+        padding: 5
+    },
+    popUpContainer: {
+        padding: 20
     }
 }
 
