@@ -1,0 +1,18 @@
+[
+    {
+        "menu_name" : "Paket A",
+        "menu_price" : 18000
+    },
+    {
+        "menu_name" : "Paket B",
+        "menu_price" : 16000
+    },
+    {
+        "menu_name" : "Ayam Matah Dada",
+        "menu_price" : 18000
+    },
+    {
+        "menu_name" : "Ayam Matah Paha",
+        "menu_price" : 16000
+    }
+]
